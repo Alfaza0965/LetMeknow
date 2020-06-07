@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<title>Contact</title>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ME87R2ZFZ6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ME87R2ZFZ6');
+</script>
+
+</head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="site2.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage">
+
+
+<!-- -----------------------------------------------------------------------------------------------------------Navbar(Menu) -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button "><i class="fa fa-home w3-margin-right"></i>Home</a>
+            <a href="AllEvents.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">All Events</a>
+            <a href="AllPrograms.html" class="w3-bar-item w3-button w3-hide-small w3-teal w3-hover-white">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+        <a><input type="text" class="w3-right w3-padding-left" id="myInput" onkeyup="filterEvents()" placeholder= "Search in Programs..." title="Search in Programs"></a>
+ </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+        <a href="AllEvents.html" class="w3-bar-item w3-button">All Events</a>
+        <a href="AllPrograms.html" class="w3-bar-item w3-button">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------------Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+    <img src="https://www.w3schools.com//w3images/sailboat.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+    <div class="w3-container w3-display-bottomleft w3-margin-bottom w3-opacity-min w3-purple w3">
+    <h2>Let Me Know</h2>
+    <p>In an effort to assist the community during these unprecedented times, <b>Let Me Know</b> is a project under development
+    that is meant to help community members become aware of free services and resources that community leaders are providing as well
+    as being a central point for the many resources in your community.</p>
+
+    </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------Programs Container -->
+  <hr>
+<div class="w3-container w3-padding-64 w3-theme-l5" id="program">
+    <div class="w3-container" style="position:relative">
+    <h1 class="w3-jumbo w3-text-red" style="position:absolute;top:-116px;left:24px"><b>Programs</b></h1>
+    </div>
+
+<p id="loadPrograms"></p>
+
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var prog = JSON.parse(this.responseText);
+
+                var x="<ul class='w3-ul w3-card-4 w3-white'>";
+                //input = document.getElementById("myInput");
+                 //x+= "<div class='w3-row-padding w3-center w3-margin-top'><div class='w3-third'><div class='w3-card w3-container' style='min-height:460px'>";
+                 //"<div class='w3-row w3-border'>";
+                for (i in prog.programs)
+                {
+
+
+                           x+=" <li class='w3-bar'> <div class='w3-bar-item'>";
+                           x+="<span class='w3-large'><b><pf>" + prog.programs[i].title +"<pf></b></span><br>";
+                           x+="<span><pf>"+ prog.programs[i].time +"<pf></span><br><br>";
+                           x+="<span><pf>"+ prog.programs[i].description +"<pf></span>";
+                           x+="</div></li>";
+
+
+
+        }//End checking of input length
+              x+="</ul>";
+
+                document.getElementById("loadPrograms").innerHTML = x;
+        }
+};
+xmlhttp.open("GET", "http://letmeknow.zanproduction.org/basicprograms.json", true);
+xmlhttp.send();
+</script>
+
+</div>
+
+
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------Footer -->
+<footer class="w3-container  w3-teal w3-center">
+    <h4>Coming Soon</h4>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="App Store"> <img src="img/download-on-the-app-store-apple.svg"  style="width:20%"> <!--Coming Soon --></a>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Play Store"> <img src="img/google-play-download-android-app.svg" style="width:20%"> <!--Coming Soon --></a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+    <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+        <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+        <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+        <i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+    var x = document.getElementById("mySidebar");
+    x.style.width = "300px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+<script>
+
+var input, filter, p, li, a, i, txtValue;
+
+function filterEvents() {
+    var elmnt = document.getElementById("loadPrograms");
+        elmnt.scrollIntoView();
+        input = document.getElementById("myInput");
+        filter = input.value.toLowerCase().split(' ');
+        p = document.getElementById("loadPrograms");
+        li = p.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+                h3 = li[i].getElementsByTagName("pf")[0];
+                //para = li[i].getElementsByTagName("pf2")[1];
+                if (h3 ) {
+                        txtValue = h3.textContent || h3.innerText;
+                        //txtValue2 = para.textContent || para.innerText;
+                        //if ((txtValue.toLowerCase().indexOf(filter) > -1) || txtValue2.toLowerCase().indexOf(filter) > -1 ) {
+                        if ((txtValue.toLowerCase().indexOf(filter) > -1)) {
+                            li[i].style.display = "";
+
+                        }
+                        else {
+                                li[i].style.display = "none";}
+
+        }
+    }
+}
+</script>
+
+
+</body>
+</html>

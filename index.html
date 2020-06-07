@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Let Me Know-Coronavirus Response</title>
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ME87R2ZFZ6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ME87R2ZFZ6');
+</script>
+
+<script data-ad-client="ca-pub-1134374927268143" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<script type = "text/javascript">
+
+    var d = new Date();
+    var exdays = 120;
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 *1000));
+    var expires = "expires=" + d;
+
+//    document.cookie = "cookieConsent=" +"; " + expires;
+    document.cookie = "SameSite=None;Secure" + expires;
+    document.cookie = "promo_shown=1;" + expires;
+
+//    checkCookie();
+
+
+
+
+
+</script>
+
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="site2.css">
+
+<!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage" onload="checkCookie()">
+
+<div id="cookiesConsent" class="w3-hide w3-card w3-mobile PanelFloat" style="width:35%">
+    <div class="w3-modal-content w3-card-4 w3-animate-bottom">
+        <header class="w3-container w3-teal">
+            <span onclick="document.getElementById('cookiesConsent').style.display='none'" class="w3-button w3-teal w3-display-topmiddle w3-margin-right w3-margin-right"><i class="fa fa-remove"></i></span>
+            <h4>Cookies Consent </h4>
+        </header>
+        <div class="w3-content  w3-tiny pazOverflow w3-padding">
+            <p>Let Me Know and Let Me Know CoronaVirus Response's website stores data such as<br> cookies to enable important site functionality including analytics, targeting, and <br>personalization. Data Storage Policy</p>
+            <p>Go to our <a class="w3-text-teal" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
+            <button class="w3-btn w3-black" onclick="Agree2Cookies()">Accept Cookies!</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- -----------------------------------------------------------------------------------------------------------Navbar(Menu) -->
+<div class="w3-top">
+ <div class="w3-bar w3-black w3-left-align">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Home</a>
+            <a href="AllEvents.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">All Events</a>
+            <a href="AllPrograms.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+ </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+        <a href="AllEvents.html" class="w3-bar-item w3-button">All Events</a>
+        <a href="AllPrograms.html" class="w3-bar-item w3-button">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------------Image Header -->
+<div class="w3-display-container w3-animate-opacity w3-mobile w3-hidden">
+    <img src="https://www.w3schools.com//w3images/sailboat.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+    <div class="w3-container w3-display-bottomleft w3-margin-bottom w3-opacity-min w3-purple w3">
+    <h2>Let Me Know</h2>
+    <p>In an effort to assist the community during these unprecedented times, <b>Let Me Know</b> is a project under development
+    that is meant to help community members become aware of free services and resources that community leaders are providing as well
+    as being a central point for the many resources in your community.</p>
+
+    </div>
+</div>
+
+<!-- -----------------------------------------------------------------------------------Partial Events Row -->
+<hr>
+<div class="w3-row-padding w3-padding-64 w3-margin-top" id="work">
+    <!-- -------------------------------------------------------------------------------------------------------Go to more events Button Container -->
+<div class="w3-container" style="position:relative">
+    <h1 class="w3-jumbo w3-text-red w3-shadow" style="position:absolute;top:-116px;left:24px"><b>Events</b></h1>
+</div>
+
+
+<p id="loadEvents"></p>
+
+
+
+
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                var x="";
+                //input = document.getElementById("myInput");
+
+                 //x+= "<div class='w3-row-padding w3-center w3-margin-top'><div class='w3-third'><div class='w3-card w3-container' style='min-height:460px'>";
+                 //"<div class='w3-row w3-border'>";
+                for (i in myObj.events)
+                {
+                                   if(i <3){
+                            x+= "<div class='w3-row-padding w3-third'><div class='w3-container w3-hover-shadow w3-row-padding w3-center w3-card w3-white w3-container'style='height:660px'>"
+                                    +"<h3> <a href='#'>"+myObj.events[i].title + "</a></h3>"
+                                    +"<img src='" + myObj.events[i].imagelink + "' alt='Event Screenshot " + myObj.events[i].title+ "'style='width:70%' >"
+                                    +"<p>"+ myObj.events[i].time +"</p>"
+                                    +"<p>"+ myObj.events[i].date +"</p>"
+                                    +"<p><a>"+ myObj.events[i].address +"</a></p>"
+                                    +"<p>"+ myObj.events[i].description +"</p></div><br></div></div>";
+                                             }
+
+        }
+
+
+                document.getElementById("loadEvents").innerHTML = x;
+        }
+};
+xmlhttp.open("GET", "https://myvalentines.s3.amazonaws.com/LetMeKnow/basicevents.json", true);
+xmlhttp.send();
+</script>
+
+  <button onclick="location.href='AllEvents.html'" class="w3-button w3-center w3-xlarge w3-teal w3-round-xxlarge w3-hover-teal w3-margin-ShowMore" title="Go To Events List">
+  + Show More
+  </button>
+
+
+
+</div>
+
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------Partial Programs Container -->
+  <hr>
+<div class="w3-container w3-padding-64 w3-theme-l5" id="program">
+    <div class="w3-container" style="position:relative">
+    <h1 class="w3-jumbo w3-text-red" style="position:absolute;top:-116px;left:24px"><b>Programs</b></h1>
+    </div>
+
+<p id="programs"></p>
+
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var prog = JSON.parse(this.responseText);
+
+                var x="<ul class='w3-ul w3-card-4 w3-white' >";
+                //input = document.getElementById("myInput");
+                 //x+= "<div class='w3-row-padding w3-center w3-margin-top'><div class='w3-third'><div class='w3-card w3-container' style='min-height:460px'>";
+                 //"<div class='w3-row w3-border'>";
+                for (i in prog.programs)
+                {
+
+
+                           x+=" <li class='w3-bar'> <div class='w3-bar-item w3-margin-bottom'>";
+                           x+="<span class='w3-large'><b>" + prog.programs[i].title +"</b></span><br>";
+                           x+="<span>"+ prog.programs[i].time +"</span><br><br>";
+                           x+="<span>"+ prog.programs[i].description +"</span>";
+                           x+="</div></li>";
+
+
+
+        }//End checking of input length
+              x+="</ul>";
+
+                document.getElementById("programs").innerHTML = x;
+        }
+};
+xmlhttp.open("GET", "https://zanproduction.org/basicprograms.json", true);
+xmlhttp.send();
+</script>
+
+  <button onclick="location.href='AllPrograms.html'" class="w3-button w3-xlarge w3-teal w3-round-xxlarge w3-hover-teal w3-margin-ShowMore" title="Go To Programs List">
+  + Show More
+  </button>
+
+</div>
+
+
+
+<!-- -------------------------------------------------------------------------------------------------------Go to more events Button Container -->
+<!--
+<div class="w3-container" style="position:relative">
+    <a href="AllEvents.html" class="w3-button w3-xxxlarge w3-circle w3-teal"style="position:absolute;top:-28px;right:24px">+</a>
+</div>
+    -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------Contact Row -->
+<hr>
+<div class="w3-row-padding w3-center w3-padding-64" id="contact">
+         <div class="w3-container" style="position:relative">
+    <h1 class="w3-jumbo w3-text-red" style="position:absolute;top:-116px;left:24px"><b>Contact Us</b></h1>
+    </div>
+
+
+
+
+
+  <div class="w3-bar w3-black w3-margin-bottom">
+    <button class="w3-bar-item w3-button tablink w3-teal" onclick="openCity(event,'Con')">Contact</button>
+    <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Event')">Submit Event</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Program')">Submit Program</button>
+
+  </div>
+
+  <div id="Event" class="w3-container city PAZ-animate-fading" style="display:none">
+<!-- -----------------------------------------------------------------Submit Event -->
+   <div class="w3-container w3-card-4 w3-margin-right PAZ-margin-18-LR w3-padding w3-left-align">
+        <h2 class="w3-text-blue w3-center">Submit an Event!</h2>
+
+        <p class = "w3-left"> Have an event? Want to share a community service event to help out your community during these unprecedented times? Have a digital class you want your community to become aware of?
+            Sign in to your Google Account and submit a form with your event details.</p>
+        <p> Upon approval from our staff, your event will be shown on this site, letmeknow.zanproduction.org website Coronavirus Response</p>
+        <p><span style="color: #A80000"><u><b>Please Note:</b> You will need to sign in to your gmail account in order to submit an event for review.</u></span></p>
+
+        <p class = " w3-center"><button class="w3-btn w3-blue" onclick="window.open('https://forms.gle/3HyrLBHpQnjg3Du28'); ">Submit an Event!</button></p>
+    </div>
+   </div>
+
+<!-- -----------------------------------------------------------------Submit Program -->
+  <div id="Program" class="w3-container city PAZ-animate-fading" style="display:none">
+     <iframe src="https://script.google.com/macros/s/AKfycbyybHsgXjD7RF-iYfJycYh_pijT7AcqOLYhs6ioUfyzRS8xSYM/exec" width="100%" height="1600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+
+
+<!-- -----------------------------------------------------------------Submit Inquiry -->
+  <div id="Con" class="w3-container city PAZ-margin-18-LR PAZ-animate-fading" >
+
+  <script type="text/javascript">var submitted=false;</script>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='index.html#contact';}"></iframe>
+
+<!--<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='index.html#contact';}"></iframe>-->
+
+  <form id="cform" class="w3-container w3-card-4" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfyJtyNnHhSbW4LIv55I1xpf301ikOAQBgVJiVOtoX2EVAl6g/formResponse" method="post" target="hidden_iframe"
+    onsubmit="submitted=true;">
+      <h2 class="w3-text-blue">Say Hello</h2>
+      <p>Feel free to send us a message with any comments and/or questions. </p>
+
+      <p><label for="email" class="w3-text-blue w3-left"><b>Email:</b></label>
+      <input id="email" class="w3-input w3-border" name="emailAddress" type="email" required></p>
+
+      <p><label for="cq" class="w3-text-blue w3-left"><b>Comment or Question: </b></label>
+      <textarea id="cq" class="w3-input w3-border" name="entry.947592968" type="text" required></textarea></p>
+
+      <p><button class="w3-btn w3-blue" onclick="sendNresetEnter()">Ask Away!</button></p>
+  </form>
+
+
+
+
+  </div>
+
+
+<script>
+
+
+
+function Agree2Cookies()
+{
+    var d = new Date();
+    var exdays = 120;
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 *1000));
+    var expires = "expires=" + d;
+    document.cookie = "cookieConsent=Nope" +"; " + expires;
+     document.getElementById('cookiesConsent').style.display='none';
+}
+
+
+function checkCookie() {
+
+      var cookieConsent = "cookieConsent";
+      var cookshown = getCookie(cookieConsent);
+      var element = document.getElementById("cookiesConsent");
+      if(cookshown != "Nope" || cookshown == "undefined" || cookshown == null)
+      {
+        //var element = document.getElementById("cookiesConsent");
+        element.classList.remove("w3-hide");
+//        element.classList.a
+          // document.getElementById('cookiesConsent').style.display='block';
+      }
+
+      //else{document.getElementById('cookiesConsent').style.display='block'}
+
+}
+
+// returns the cookie with the given name,
+// or undefined if not found
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+
+
+
+function sendNresetEnter()
+{
+        document.getElementById('cq').addEventListener('keypress', function(event) {
+        if (event.keyCode == 13) {
+            document.getElementById("cform").submit();
+            document.getElementById("cform").reset();
+        }
+    });
+
+
+}
+
+
+
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-teal", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-teal";
+
+  /*
+  if(cityName == "Event"){
+      window.open("https://forms.gle/3HyrLBHpQnjg3Du28");
+      //https://forms.gle/3HyrLBHpQnjg3Du28
+  }
+                   */
+}
+</script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------Footer -->
+<footer class="w3-container  w3-teal w3-center">
+    <h4>Coming Soon</h4>
+    <p class="w3-button w3-large w3-teal" href="javascript:void(0)" title="App Store"> <img src="img/download-on-the-app-store-apple.svg"  alt="App Store icon" style="width:20%"> <!--Coming Soon --></p>
+    <p class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Play Store"> <img src="img/google-play-download-android-app.svg" alt="Play Store icon" style="width:20%"> <!--Coming Soon --></p>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+
+
+    <!--
+    <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+        <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+        <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+        <i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+
+    -->
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+    var x = document.getElementById("mySidebar");
+    x.style.width = "300px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+
+</body>
+</html>

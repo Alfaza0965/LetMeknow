@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<title>LMK-Events</title>
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ME87R2ZFZ6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ME87R2ZFZ6');
+</script>
+
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="site2.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage">
+
+
+<!-- -----------------------------------------------------------------------------------------------------------Navbar(Menu) -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button "><i class="fa fa-home w3-margin-right"></i>Home</a>
+            <a href="AllEvents.html" class="w3-bar-item w3-button w3-hide-small w3-teal w3-hover-white">All Events</a>
+            <a href="AllPrograms.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+        <a><input type="text" class="w3-right" id="myInput" onkeyup="filterEvents()" placeholder= "Search in Events..." title="Search for an event"></a>
+ </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+        <a href="AllEvents.html" class="w3-bar-item w3-button">All Events</a>
+        <a href="AllPrograms.html" class="w3-bar-item w3-button">All Programs</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------------Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+    <img src="https://www.w3schools.com//w3images/sailboat.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+    <div class="w3-container w3-display-bottomleft w3-margin-bottom w3-opacity-min w3-purple w3-mobile">
+    <h2>Let Me Know</h2>
+    <p>In an effort to assist the community during these unprecedented times, <b>Let Me Know</b> is a project under development
+    that is meant to help community members become aware of free services and resources that community leaders are providing as well
+    as being a central point for the many resources in your community.</p>
+
+    </div>
+</div>
+
+
+<!-- -----------------------------------------------------------------------------------Page Title Row -->
+
+<div class="w3-container w3-row-padding w3-padding-64 w3-margin-top" style="position:relative">
+    <h1 class="w3-jumbo w3-text-red w3-shadow w3-row-padding w3-padding-64 w3-margin-top" style="position:absolute;top:-116px;left:24px"><b>Events</b></h1>
+</div>
+
+
+
+<!-- -----------------------------------------------------------------------------------Drop Down Filter Row -->
+
+<div class="w3-row w3-row-padding w3-padding-16">
+
+<!----- 1st Drop Down -->
+<div class="w3-third w3-container w3-center">
+<div class="w3-dropdown-hover">
+    <button class="w3-button w3-black">Cities</button>
+    <div id="citiesdd" class="w3-dropdown-content w3-bar-block w3-border">
+
+    </div>
+  </div>
+</div>
+
+<!----- 2nd Drop Down -->
+<div class="w3-third w3-container w3-center">
+     <div class="w3-dropdown-hover">
+    <button class="w3-button w3-black">Hover Over Me 2nd!</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">Link 1</a>
+      <a href="#" class="w3-bar-item w3-button">Link 2</a>
+      <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    </div>
+  </div>
+</div>
+
+
+<!----- 3rd Drop Down -->
+<div class="w3-third w3-container">
+ <div class="w3-dropdown-hover w3-center">
+    <button class="w3-button w3-black">Hover Over Me 3rd!</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">Link 1</a>
+      <a href="#" class="w3-bar-item w3-button">Link 2</a>
+      <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -----------------------------------------------------------------------------------Events Row -->
+<hr>
+<div class="w3-row-padding w3-padding-64 w3-margin-top" id="work">
+
+
+
+
+<p id="loadEvents"></p>
+
+
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var sheets = JSON.parse(this.responseText);
+                var x="";
+
+                PAZJSONCustomParser(sheets);
+
+                 //x+= "<div class='w3-row-padding w3-center w3-margin-top'><div class='w3-third'><div class='w3-card w3-container' style='min-height:460px'>";
+                 //"<div class='w3-row w3-border'>";
+                 for (index = 1; index < (count/NumOfCol); index++ )
+                {
+
+                //Let's try to resize the images on App Script
+                            x+= "<div class='w3-row-padding w3-third'><div class='w3-container w3-hover-shadow w3-row-padding w3-center w3-card w3-white w3-container pazOverflow' style='height:660px'>"
+                                    +"<h3> <b>"+ eventName[index] +"</b></h3>"
+                                    +"<img src='" + eventImages[index] + "' alt='Event Screenshot " + eventName[index] + "'style='width:70%' >"
+                                    +"<p>"+ eventStartTime[index]+" - "+ eventEndTime[index] +"</p>"
+                                    +"<p>"+ eventDate[index] +"</p>"
+                                    +"<p>"+ eventAddress[index] +"</p>"
+                                    +"<p>"+ eventDetails[index] +"</p>"
+                                    +"<p class=''><b>Tags: </b><pf>"+ eventStartSearchString[index] +"</pf></p></div> <br> </div></div>";
+
+                                      /*
+                                                               x+=" <li class='w3-bar'> <div class='w3-bar-item'>";
+                           x+="<span class='w3-large'>Event Name:  &nbsp;<b>" + eventName[index] +"</b></span><br>";
+                           x+="<span class='w3-large'>Event Email:  &nbsp;<b>" + eventEmail[index] +"</b></span><br>";
+                           x+="<span class='w3-large'>Event Details:  &nbsp;<b>" + eventDetails[index] +"</b></span><br>";
+                           x+="<span class='w3-large'>Event Date:  &nbsp;<b>" + eventDate[index] +"</b></span><br>";
+                           x+="<span class='w3-large'>Event Time Start/End:  &nbsp;<b>" + eventStartTime[index]+" - "+ eventEndTime[index] +"</b></span><br><br><br><br>";
+                           x+="<span class='w3-large'>Event Type:  &nbsp;<b>" + eventType[index]+"</b></span><br>";
+                           x+="<span class='w3-large'>Event Images:  &nbsp;<img src='" + eventImages[index]+"' alt='' /></span><br>";
+                           x+="<span class='w3-large w3-hide'>Event Search String:  &nbsp;<b><pf>" + eventStartSearchString[index]+"<pf></b></span>";
+                           x+="<span class='w3-large'>Event City:  &nbsp;<b><pf>" + eventCity[index]+"<pf></b></span><br>";
+                           x+="</li>";
+
+                     */
+
+        }
+        }//End checking of input length
+
+
+                document.getElementById("loadEvents").innerHTML = x;
+                LoadCitiesFilter();
+};
+xmlhttp.open("GET", "https://spreadsheets.google.com/feeds/cells/1mqvPOnP8rECXDqEZl_sM4e0AtwAXq81d86e67inm800/1/public/full?alt=json", true);
+xmlhttp.send();
+</script>
+
+
+
+
+<script>
+
+
+var eventTimeStamp = [];
+var eventEmail = [];
+var eventName = [];
+var eventStartTime = [];
+var eventDate = [];
+var eventDetails = [];
+var eventAddress = [];
+var eventEndTime = [];
+//var eventSearchStrings = [];
+var count=0;
+var eventType = [];
+var eventImages = [];
+var eventCity = [];
+var eventStartSearchString = [];
+
+var NumOfCol = 11;
+
+function PAZJSONCustomParser(sheets) {
+
+
+            //https://drive.google.com/uc?export=download&id=1MfYFd6aAhFcHbH9Z1Tlokmbc3nOFPazD
+
+
+
+for (i in sheets.feed.entry )
+{
+
+if(i%NumOfCol == 0)
+{var tmpSearchString = "";}
+
+//x % y
+//Make sure to account for null or empty strings because it will offset the array recieved
+if(i%NumOfCol == 1)
+{eventEmail.push(sheets.feed.entry[i].content.$t); }
+//console.log(sheets.feed.entry[i].content.$t);}
+else if(i%NumOfCol == 2) {
+    eventName.push(sheets.feed.entry[i].content.$t);
+    tmpSearchString += sheets.feed.entry[i].content.$t + ",";
+}
+else if(i%NumOfCol == 3) {eventStartTime.push(sheets.feed.entry[i].content.$t);}
+else if(i%NumOfCol == 4) {
+    var tmpDate = new Date(sheets.feed.entry[i].content.$t);
+    eventDate.push(tmpDate.toDateString());
+    tmpSearchString += tmpDate.toDateString() + ",";
+    }
+else if(i%NumOfCol == 5) {eventDetails.push(sheets.feed.entry[i].content.$t);}
+else if(i%NumOfCol == 6) {
+    eventAddress.push(sheets.feed.entry[i].content.$t);
+    tmpSearchString += sheets.feed.entry[i].content.$t + ",";
+    }
+else if(i%NumOfCol == 7) {eventEndTime.push(sheets.feed.entry[i].content.$t);}
+else if(i%NumOfCol == 8) {
+    eventType.push(sheets.feed.entry[i].content.$t);
+    tmpSearchString += sheets.feed.entry[i].content.$t + ",";
+    }
+else if(i%NumOfCol == 10) {
+    eventCity.push(sheets.feed.entry[i].content.$t);
+    tmpSearchString += sheets.feed.entry[i].content.$t + "";
+    eventStartSearchString.push(tmpSearchString);
+    }
+else if(i%NumOfCol == 9) {
+    if(sheets.feed.entry[i].content.$t == "" || sheets.feed.entry[i].content.$t == null)
+    {
+        tmpstr = "no photo";
+        eventImages.push(tmpstr);
+    }
+     else
+     {
+        var tmpstr = sheets.feed.entry[i].content.$t;
+        //tmpstr = tmpstr.replace("https://drive.google.com/open?id=", "https://drive.google.com/uc?export=download&id=");
+        eventImages.push(tmpstr);
+
+     }
+    }
+    count++;
+
+    }
+
+    //LoadCitiesDropDown(eventCity);
+}
+
+
+//We will need to return this from the server -- App Script   (Doing this directly from the server is time consuming on the browser...)
+//https://jeffreyeverhart.com/2016/04/14/how-to-serve-json-using-the-google-apps-script-content-service/
+function LoadCitiesFilter()
+{
+
+
+    var x="";
+
+    x+="<a onclick='filterEventsByDropDownCity(&quot;&quot;)' class='w3-bar-item w3-button'>Reset</a>";
+
+    var tmpCities = eventCity;
+    tmpCities.shift();
+    tmpCities.sort();
+    for(var i=0; i<tmpCities.length; i++)
+    {
+         x+="<a onclick='filterEventsByDropDownCity(&quot;" + tmpCities[i]+ "&quot;)' class='w3-bar-item w3-button'>" +tmpCities[i] + "</a>";
+
+    }
+
+
+   // x+="<a onclick='filterEventsByDropDownCity(&quot;Palo Verdes&quot;)' class='w3-bar-item w3-button'>Palo Verdes</a>";
+   //  x+="<a onclick='filterEventsByDropDownCity(&quot;&quot;)' class='w3-bar-item w3-button'>Redondo Beach</a>";
+
+document.getElementById('citiesdd').innerHTML = x;
+
+
+}
+
+</script>
+
+
+
+
+
+
+</div>
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------Footer -->
+<footer class="w3-container  w3-teal w3-center">
+    <h4>Coming Soon</h4>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="App Store"> <img src="img/download-on-the-app-store-apple.svg"  style="width:20%"> <!--Coming Soon --></a>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Play Store"> <img src="img/google-play-download-android-app.svg" style="width:20%"> <!--Coming Soon --></a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+    <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+        <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+        <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+        <i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+    var x = document.getElementById("mySidebar");
+    x.style.width = "300px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+<script>
+
+var input, filter,div, p, li,pf, a, i, txtValue;
+
+
+function filterEvents() {
+    var elmnt = document.getElementById("loadEvents");
+        elmnt.scrollIntoView();
+        input = document.getElementById("myInput");
+        //input = input.value.toString();
+        //filter = input.value.toLowerCase().split(' ');
+        filter = input.value.toLowerCase();
+        //filter = filter.toString();
+        div = document.getElementById("loadEvents");
+         p = div.getElementsByTagName("div");
+        for (i = 0; i < p.length; i++) {
+                pf = p[i].getElementsByTagName("pf")[0];
+              //  pf2 = p[i].getElementsByTagName("pf")[1];
+              //  pf = p[i].getElementsByTagName("pf");
+
+                //para = li[i].getElementsByTagName("a")[1];
+                if (pf) {
+
+                        txtValue = pf.textContent || pf.innerText;
+                       // txtValue2 = pf2.textContent || pf2.innerText;
+                        console.log(txtValue);
+                        console.log(filter);
+                        console.log(input.value.toString());
+                        //txtValue2 = para.textContent || para.innerText;
+                        if ((txtValue.toLowerCase().indexOf(filter) > -1) ) {
+                            p[i].style.display = "";
+
+                        }
+                        else {
+                                p[i].style.display = "none";}
+
+        }
+    }
+}
+
+/*
+
+function filterEvents() {
+    var elmnt = document.getElementById("loadEvents");
+        elmnt.scrollIntoView();
+        input = document.getElementById("myInput");
+        filter = input.value.toLowerCase().split(' ');
+        div = document.getElementById("loadEvents");
+         p = div.getElementsByTagName("div");
+        for (i = 0; i < p.length; i++) {
+                pf = p[i].getElementsByTagName("pf")[0];
+                //para = li[i].getElementsByTagName("a")[1];
+                if (pf) {
+                        txtValue = pf.textContent || pf.innerText;
+                        for(var k=0; filter.length; f++)
+                        {
+                        //txtValue2 = para.textContent || para.innerText;
+                        if ((txtValue.toLowerCase().indexOf(filter[k]) > -1)) {
+                            p[i].style.display = "";
+                            //break;
+
+                        }
+                        else {
+                                p[i].style.display = "none";}
+                        }
+        }
+    }
+}
+*/
+
+function filterEventsByDropDownCity(city) {
+    var elmnt = document.getElementById("loadEvents");
+        elmnt.scrollIntoView();
+        //var city=cit;
+        //input = document.getElementById("myInput");
+        filter = city.toLowerCase();
+        //filter = city;
+        div = document.getElementById("loadEvents");
+         p = div.getElementsByTagName("div");
+        for (i = 0; i < p.length; i++) {
+                pf = p[i].getElementsByTagName("pf")[0];
+                //para = li[i].getElementsByTagName("a")[1];
+                if (pf) {
+                        txtValue = pf.textContent || pf.innerText;
+                        //txtValue2 = para.textContent || para.innerText;
+                        if ((txtValue.toLowerCase().indexOf(filter) > -1)) {
+                            p[i].style.display = "";
+
+                        }
+                        else {
+                                p[i].style.display = "none";}
+
+        }
+    }
+}
+
+
+</script>
+
+
+</body>
+</html>
