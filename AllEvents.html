@@ -66,8 +66,8 @@
 
 <div class="w3-row w3-row-padding w3-padding-16">
 
-<!----- 1st Drop Down -->
-<div class="w3-third w3-container w3-center">
+<!----- 1st Drop Down (Cities) -->
+<div class="w3-third w3-container w3-center w3-mobile">
 <div class="w3-dropdown-hover">
     <button class="w3-button w3-black">Cities</button>
     <div id="citiesdd" class="w3-dropdown-content w3-bar-block w3-border">
@@ -76,14 +76,15 @@
   </div>
 </div>
 
-<!----- 2nd Drop Down -->
-<div class="w3-third w3-container w3-center">
+<!----- 2nd Drop Down (Type) -->
+<div class="w3-third w3-container w3-center w3-mobile">
      <div class="w3-dropdown-hover">
-    <button class="w3-button w3-black">Hover Over Me 2nd!</button>
+    <button class="w3-button w3-black">All Events</button>
     <div class="w3-dropdown-content w3-bar-block w3-border">
-      <a href="#" class="w3-bar-item w3-button">Link 1</a>
-      <a href="#" class="w3-bar-item w3-button">Link 2</a>
-      <a href="#" class="w3-bar-item w3-button">Link 3</a>
+		<a  onClick="filterEventsByDropDownType('')"  class="w3-bar-item w3-button">Reset</a>
+		<a  onClick="filterEventsByDropDownType('In Person')"  class="w3-bar-item w3-button">In Person</a>
+		<a  onClick="filterEventsByDropDownType('In Person')"  class="w3-bar-item w3-button">Online</a>
+ 		
     </div>
   </div>
 </div>
@@ -91,8 +92,8 @@
 
 <!----- 3rd Drop Down -->
 <div class="w3-third w3-container">
- <div class="w3-dropdown-hover w3-center">
-    <button class="w3-button w3-black">Hover Over Me 3rd!</button>
+ <div class="w3-dropdown-hover w3-center w3-mobile">
+    <button class="w3-button w3-black"></button>
     <div class="w3-dropdown-content w3-bar-block w3-border">
       <a href="#" class="w3-bar-item w3-button">Link 1</a>
       <a href="#" class="w3-bar-item w3-button">Link 2</a>
@@ -127,9 +128,70 @@
 
 <p id="loadEvents"></p>
 
+	
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                var x, y="";
+                //input = document.getElementById("myInput");
+				//console.log(JSON.stringify(myObj, undefined, 4));
+                 //x+= "<div class='w3-row-padding w3-center w3-margin-top'><div class='w3-third'><div class='w3-card w3-container' style='min-height:460px'>";
+                 //"<div class='w3-row w3-border'>";
+                for (i in myObj.events)
+                {
+                                 {
+                            x+= "<div class='w3-row-padding w3-third'><div class='w3-container w3-hover-shadow w3-row-padding w3-center w3-card w3-white w3-container'style='height:660px'>"
+                                    +"<h3> <a href='#'>"+myObj.events[i].name + "</a></h3>"
+                                    
+									+"<img src='" + myObj.events[i].picLink + "' alt='Event Screenshot " + myObj.events[i].name+ "'style='width:70%'>"
+                                	+"<p>"+ myObj.events[i].date +"</p>"    
+									+"<p>"+ myObj.events[i].timeStart +"</p>"
+                                    +"<p><a>"+ myObj.events[i].address +"</a></p>"
+                                    +"<p>"+ myObj.events[i].description +"</p>"
+									+"<p class=''><b>Tags: </b><pf>"+ myObj.events[i].searchString +"</pf></div><br></div></div>";
+                                             }
+
+        		}
+			 	
+				y+="<a onclick='filterEventsByDropDownCity(&quot;&quot;)' class='w3-bar-item w3-button'>Reset</a>";
+				for(j in myObj.cities)
+					{
+						//y+="<a onclick='filterEventsByDropDownCity(&quot;" + myObj.cities[j] + "&quot;)' class='w3-bar-item w3-button'>"
+						//+myObj.cities[j]+"</a>";
+						//+"<p>"+  +"</p>"
+				y+="<a onclick='filterEventsByDropDownCity(&quot;" +myObj.cities[j].city+"&quot;)' class='w3-bar-item w3-button'>"+ myObj.cities[j].city+"</a>";
+/*
+    for(var i=0; i<tmpCities.length; i++)
+    {
+         x+="<a onclick='filterEventsByDropDownCity(&quot;" + tmpCities[i]+ "&quot;)' class='w3-bar-item w3-button'>" +tmpCities[i] + "</a>";
+
+    }
+
+*/
+   			// x+="<a onclick='filterEventsByDropDownCity(&quot;Palo Verdes&quot;)' class='w3-bar-item w3-button'>Palo Verdes</a>";
+   			//  x+="<a onclick='filterEventsByDropDownCity(&quot;&quot;)' class='w3-bar-item w3-button'>Redondo Beach</a>";
+
+			//document.getElementById('citiesdd').innerHTML = y;
+
+						
+						
+						
+					}
+
+
+                document.getElementById("loadEvents").innerHTML = x;
+				document.getElementById("citiesdd").innerHTML = y;
+        }
+};
+xmlhttp.open("GET", "https://script.google.com/macros/s/AKfycbyybHsgXjD7RF-iYfJycYh_pijT7AcqOLYhs6ioUfyzRS8xSYM/exec", true);
+xmlhttp.send();
+</script>
 
 
 
+<!--
 <script>
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -180,8 +242,8 @@ xmlhttp.open("GET", "https://spreadsheets.google.com/feeds/cells/1mqvPOnP8rECXDq
 xmlhttp.send();
 </script>
 
-
-
+-->
+<!--
 
 <script>
 
@@ -270,6 +332,8 @@ else if(i%NumOfCol == 9) {
 
 //We will need to return this from the server -- App Script   (Doing this directly from the server is time consuming on the browser...)
 //https://jeffreyeverhart.com/2016/04/14/how-to-serve-json-using-the-google-apps-script-content-service/
+
+
 function LoadCitiesFilter()
 {
 
@@ -299,7 +363,7 @@ document.getElementById('citiesdd').innerHTML = x;
 </script>
 
 
-
+-->
 
 
 
