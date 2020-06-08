@@ -99,7 +99,7 @@
 <div class="w3-row-padding w3-padding-64 w3-margin-top" id="work">
     <!-- -------------------------------------------------------------------------------------------------------Go to more events Button Container -->
 <div class="w3-container" style="position:relative">
-    <h1 class="w3-jumbo w3-text-red w3-shadow" style="position:absolute;top:-116px;left:24px"><b>Events</b></h1>
+    <h1 class="w3-jumbo w3-text-red w3-shadow w3-left-align PAZ-Titlemargins-Top" ><b>Events</b></h1>
 </div>
 
 
@@ -177,9 +177,15 @@ xmlhttp.open("GET", "https://script.google.com/macros/s/AKfycbyybHsgXjD7RF-iYfJy
 xmlhttp.send();
 </script>
 
-  <button onclick="location.href='AllEvents.html'" class="w3-button w3-center w3-xlarge w3-teal w3-round-xxlarge w3-hover-teal w3-margin-ShowMore" title="Go To Events List">
-  + Show More
-  </button>
+	
+
+	
+
+		
+ 	<div class="w3-panel w3-margin-25centLeft" onclick="location.href='AllEvents.html'">
+	 <h2 class="w3-right-align w3-teal w3 w3-hover-black w3-margin-25centLeft">View All Events <i class="fa fa-arrow-right"></i></h2>
+
+    </div>
 
 
 
@@ -190,11 +196,10 @@ xmlhttp.send();
   <hr>
 <div class="w3-container w3-padding-64 w3-theme-l5" id="program">
     <div class="w3-container" style="position:relative">
-    <h1 class="w3-jumbo w3-text-red" style="position:absolute;top:-116px;left:24px"><b>Programs</b></h1>
+    <h1 class="w3-jumbo w3-text-red w3-left-align PAZ-Titlemargins-Top" ><b>Programs</b></h1>
     </div>
 
 <p id="programs"></p>
-
 
 
 <script>
@@ -245,40 +250,45 @@ xmlhttp.send();
     -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------Contact Row -->
 <hr>
-<div class="w3-row-padding w3-center w3-padding-64" id="contact">
+<div class="w3-row-padding w3-center w3-padding-64 w3-mobile" id="contact">
          <div class="w3-container" style="position:relative">
-    <h1 class="w3-jumbo w3-text-red" style="position:absolute;top:-116px;left:24px"><b>Contact Us</b></h1>
+    <h1 class="w3-jumbo w3-text-red w3-left-align PAZ-Titlemargins-Top" ><b>Contact Us</b></h1>
     </div>
 
 
 
 
 
-  <div class="w3-bar w3-black w3-margin-bottom">
-    <button class="w3-bar-item w3-button tablink w3-teal" onclick="openCity(event,'Con')">Contact</button>
-    <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Event')">Submit Event</button>
-    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Program')">Submit Program</button>
+  <div class="w3-bar w3-black w3-margin-bottom w3-mobile">
+    <button class="w3-bar-item w3-button tablink w3-teal" onclick="openCity(event,'Con')">Questions?</button>
+    <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Event')">Reach Community</button>
+    <!--<button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Program')">Submit Program</button>-->
 
   </div>
 
-  <div id="Event" class="w3-container city PAZ-animate-fading" style="display:none">
+  <div id="Event" class="w3-container city PAZ-animate-fading w3-mobile" style="display:none">
 <!-- -----------------------------------------------------------------Submit Event -->
    <div class="w3-container w3-card-4 w3-margin-right PAZ-margin-18-LR w3-padding w3-left-align">
-        <h2 class="w3-text-blue w3-center">Submit an Event!</h2>
+        <h2 class="w3-text-blue w3-center">Reach out to your community</h2>
 
-        <p class = "w3-left"> Have an event? Want to share a community service event to help out your community during these unprecedented times? Have a digital class you want your community to become aware of?
-            Sign in to your Google Account and submit a form with your event details.</p>
-        <p> Upon approval from our staff, your event will be shown on this site, letmeknow.zanproduction.org website Coronavirus Response</p>
+        <p class = "w3-left"> Know of, or are you hosting an event that you would like your community to become aware of? <br>
+		Want to share a community service event to help out your community during these unprecedented times? Have a digital class you want your community to become aware of?
+            <br>
+		Sign in to your Google Account and submit a form with your event details.</p>
+        
+	   <p> Upon approval from our staff, your event will be shown on this site, letmeknow.zanproduction.org website Coronavirus Response</p>
         <p><span style="color: #A80000"><u><b>Please Note:</b> You will need to sign in to your gmail account in order to submit an event for review.</u></span></p>
 
-        <p class = " w3-center"><button class="w3-btn w3-blue" onclick="window.open('https://forms.gle/3HyrLBHpQnjg3Du28'); ">Submit an Event!</button></p>
+        <p class = "w3-padding w3-center w3-margin-right ">
+			<button class="w3-btn w3-blue w3-mobile w3-margin" onclick="window.open('https://forms.gle/3HyrLBHpQnjg3Du28'); ">Submit an Event</button>
+			<button class="w3-btn w3-blue w3-mobile w3-margin" onclick="window.open('https://forms.gle/3HyrLBHpQnjg3Du28'); ">Submit an Program</button>
+			</p>
+			
+       
+			
     </div>
    </div>
 
-<!-- -----------------------------------------------------------------Submit Program -->
-  <div id="Program" class="w3-container city PAZ-animate-fading" style="display:none">
-     <iframe src="https://script.google.com/macros/s/AKfycbyybHsgXjD7RF-iYfJycYh_pijT7AcqOLYhs6ioUfyzRS8xSYM/exec" width="100%" height="1600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </div>
 
 
 <!-- -----------------------------------------------------------------Submit Inquiry -->

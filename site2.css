@@ -262,4 +262,5 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-margin-50centLeft{margin-left:50%!important}
 .PAZ-margin-18-LR{margin-left:17%!important; margin-right:17%!important}
 .PAZ-animate-fading{animation:fading 1s linear}@keyframes fading{0%{opacity:0}100%{opacity:1}}
+.PAZ-Titlemargins-Top{margin-top:-9%!important}
 
